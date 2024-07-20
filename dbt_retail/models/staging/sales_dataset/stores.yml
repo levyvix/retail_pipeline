@@ -4,6 +4,6 @@ models:
   - name: stg__stores
     description: ""
     columns:
-      - name: store
+      - name: store_id
       - name: type
       - name: size

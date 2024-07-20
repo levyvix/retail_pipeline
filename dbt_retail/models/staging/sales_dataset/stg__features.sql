@@ -8,7 +8,7 @@ with raw_source as (
 final as (
 
     select
-        cast(Store as int64) as store,
+        cast(Store as int64) as store_id,
         cast(Date as date) as date,
         cast(Temperature as float64) as temperature,
         cast(Fuel_Price as float64) as fuel_price,

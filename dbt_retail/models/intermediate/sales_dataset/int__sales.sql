@@ -5,9 +5,9 @@ with sales as (
 )
 
 select
-	store
-	dept
-	date
-	weekly_sales
+	store_id,
+	dept_id,
+	date,
+	weekly_sales,
 	isholiday
 from sales

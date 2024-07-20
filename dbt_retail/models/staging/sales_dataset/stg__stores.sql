@@ -8,7 +8,7 @@ with raw_source as (
 final as (
 
     select
-        cast(Store as int64) as store,
+        cast(Store as int64) as store_id,
         cast(Type as string) as type,
         cast(Size as int64) as size
 
