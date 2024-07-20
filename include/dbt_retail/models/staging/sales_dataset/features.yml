@@ -4,7 +4,7 @@ models:
   - name: stg__features
     description: ""
     columns:
-      - name: store
+      - name: store_id
       - name: date
       - name: temperature
       - name: fuel_price

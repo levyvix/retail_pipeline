@@ -4,8 +4,8 @@ models:
   - name: stg__sales
     description: ""
     columns:
-      - name: store
-      - name: dept
+      - name: store_id
+      - name: dept_id
       - name: date
       - name: weekly_sales
       - name: isholiday
