@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: stg__sales
+    description: ""
+    columns:
+      - name: store
+      - name: dept
+      - name: date
+      - name: weekly_sales
+      - name: isholiday

@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: stg__features
+    description: ""
+    columns:
+      - name: store
+      - name: date
+      - name: temperature
+      - name: fuel_price
+      - name: markdown1
+      - name: markdown2
+      - name: markdown3
+      - name: markdown4
+      - name: markdown5
+      - name: cpi
+      - name: unemployment
+      - name: isholiday

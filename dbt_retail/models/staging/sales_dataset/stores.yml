@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  - name: stg__stores
+    description: ""
+    columns:
+      - name: store
+      - name: type
+      - name: size

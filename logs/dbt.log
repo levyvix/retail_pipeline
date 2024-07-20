@@ -1,0 +1,176 @@
+[0m15:48:32.957717 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f62292a5840>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f6228a67460>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f6228a669e0>]}
+
+
+============================== 15:48:32.959179 | 65f51ad9-96f1-4a03-b3c8-948dab88e267 ==============================
+[0m15:48:32.959179 [info ] [MainThread]: Running with dbt=1.8.4
+[0m15:48:32.959707 [debug] [MainThread]: running dbt with arguments {'no_print': 'None', 'log_path': 'logs', 'version_check': 'True', 'send_anonymous_usage_stats': 'True', 'indirect_selection': 'eager', 'invocation_command': 'dbt init', 'target_path': 'None', 'introspect': 'True', 'static_parser': 'True', 'empty': 'None', 'warn_error': 'None', 'cache_selected_only': 'False', 'log_cache_events': 'False', 'profiles_dir': '/home/levy/.dbt', 'use_experimental_parser': 'False', 'log_format': 'default', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'debug': 'False', 'fail_fast': 'False', 'use_colors': 'True', 'partial_parse': 'True', 'printer_width': '80', 'write_json': 'True', 'quiet': 'False'}
+[0m15:48:32.983312 [warn ] [MainThread]: [ConfigFolderDirectory]: Unable to parse dict {'dir': PosixPath('/home/levy/.dbt')}
+[0m15:48:32.983901 [info ] [MainThread]: Creating dbt configuration folder at 
+[0m15:48:42.194020 [debug] [MainThread]: Starter project path: /home/levy/Desktop/proj/retail_pipeline/.venv/lib/python3.10/site-packages/dbt/include/starter_project
+[0m15:48:42.196509 [info ] [MainThread]: 
+Your new dbt project "retail_dbt_project" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m15:48:42.196924 [info ] [MainThread]: Setting up your profile.
+[0m15:48:45.214742 [error] [MainThread]: Encountered an error:
+cannot import name 'POLLING_PREDICATE' from 'google.api_core.future.polling' (/home/levy/Desktop/proj/retail_pipeline/.venv/lib/python3.10/site-packages/google/api_core/future/polling.py)
+[0m15:48:45.215789 [error] [MainThread]: Traceback (most recent call last):
+  File "/home/levy/Desktop/proj/retail_pipeline/.venv/lib/python3.10/site-packages/dbt/cli/requires.py", line 138, in wrapper
+    result, success = func(*args, **kwargs)
+  File "/home/levy/Desktop/proj/retail_pipeline/.venv/lib/python3.10/site-packages/dbt/cli/requires.py", line 101, in wrapper
+    return func(*args, **kwargs)
+  File "/home/levy/Desktop/proj/retail_pipeline/.venv/lib/python3.10/site-packages/dbt/cli/main.py", line 470, in init
+    results = task.run()
+  File "/home/levy/Desktop/proj/retail_pipeline/.venv/lib/python3.10/site-packages/dbt/task/init.py", line 347, in run
+    self.setup_profile(profile_name)
+  File "/home/levy/Desktop/proj/retail_pipeline/.venv/lib/python3.10/site-packages/dbt/task/init.py", line 263, in setup_profile
+    self.create_profile_from_target(adapter, profile_name=profile_name)
+  File "/home/levy/Desktop/proj/retail_pipeline/.venv/lib/python3.10/site-packages/dbt/task/init.py", line 173, in create_profile_from_target
+    load_plugin(adapter)
+  File "/home/levy/Desktop/proj/retail_pipeline/.venv/lib/python3.10/site-packages/dbt/adapters/factory.py", line 239, in load_plugin
+    return FACTORY.load_plugin(name)
+  File "/home/levy/Desktop/proj/retail_pipeline/.venv/lib/python3.10/site-packages/dbt/adapters/factory.py", line 68, in load_plugin
+    mod: Any = import_module("." + name, "dbt.adapters")
+  File "/usr/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/home/levy/Desktop/proj/retail_pipeline/.venv/lib/python3.10/site-packages/dbt/adapters/bigquery/__init__.py", line 5, in <module>
+    from dbt.adapters.bigquery.impl import BigQueryAdapter, GrantTarget, PartitionConfig  # noqa
+  File "/home/levy/Desktop/proj/retail_pipeline/.venv/lib/python3.10/site-packages/dbt/adapters/bigquery/impl.py", line 49, in <module>
+    from dbt.adapters.bigquery.python_submissions import (
+  File "/home/levy/Desktop/proj/retail_pipeline/.venv/lib/python3.10/site-packages/dbt/adapters/bigquery/python_submissions.py", line 7, in <module>
+    from google.api_core.future.polling import POLLING_PREDICATE
+ImportError: cannot import name 'POLLING_PREDICATE' from 'google.api_core.future.polling' (/home/levy/Desktop/proj/retail_pipeline/.venv/lib/python3.10/site-packages/google/api_core/future/polling.py)
+
+[0m15:48:45.217024 [debug] [MainThread]: Resource report: {"command_name": "init", "command_wall_clock_time": 12.296178, "process_user_time": 3.553502, "process_kernel_time": 0.334399, "process_mem_max_rss": "187360", "process_in_blocks": "248", "process_out_blocks": "48784", "command_success": false}
+[0m15:48:45.217782 [debug] [MainThread]: Command `dbt init` failed at 15:48:45.217642 after 12.30 seconds
+[0m15:48:45.218396 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f62292a5840>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f62278b94b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f62278bae30>]}
+[0m15:48:45.218999 [debug] [MainThread]: Flushing usage events
+[0m15:59:01.644450 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f365c4dd750>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f365a9df460>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f365a9df3a0>]}
+
+
+============================== 15:59:01.646897 | 83f8fd97-f520-4ed9-8153-958e1d320d99 ==============================
+[0m15:59:01.646897 [info ] [MainThread]: Running with dbt=1.8.4
+[0m15:59:01.647371 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'False', 'fail_fast': 'False', 'log_path': 'logs', 'profiles_dir': '/home/levy/.dbt', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'static_parser': 'True', 'log_format': 'default', 'target_path': 'None', 'invocation_command': 'dbt init', 'send_anonymous_usage_stats': 'True'}
+[0m15:59:14.261112 [debug] [MainThread]: Starter project path: /home/levy/Desktop/proj/retail_pipeline/.venv/lib/python3.10/site-packages/dbt/include/starter_project
+[0m15:59:14.263265 [info ] [MainThread]: 
+Your new dbt project "retail_dbt_project" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m15:59:14.263629 [info ] [MainThread]: Setting up your profile.
+[0m15:59:45.847594 [error] [MainThread]: Encountered an error:
+
+[0m15:59:45.848867 [error] [MainThread]: Traceback (most recent call last):
+  File "/home/levy/Desktop/proj/retail_pipeline/.venv/lib/python3.10/site-packages/dbt/cli/requires.py", line 138, in wrapper
+    result, success = func(*args, **kwargs)
+  File "/home/levy/Desktop/proj/retail_pipeline/.venv/lib/python3.10/site-packages/dbt/cli/requires.py", line 101, in wrapper
+    return func(*args, **kwargs)
+  File "/home/levy/Desktop/proj/retail_pipeline/.venv/lib/python3.10/site-packages/dbt/cli/main.py", line 470, in init
+    results = task.run()
+  File "/home/levy/Desktop/proj/retail_pipeline/.venv/lib/python3.10/site-packages/dbt/task/init.py", line 347, in run
+    self.setup_profile(profile_name)
+  File "/home/levy/Desktop/proj/retail_pipeline/.venv/lib/python3.10/site-packages/dbt/task/init.py", line 263, in setup_profile
+    self.create_profile_from_target(adapter, profile_name=profile_name)
+  File "/home/levy/Desktop/proj/retail_pipeline/.venv/lib/python3.10/site-packages/dbt/task/init.py", line 180, in create_profile_from_target
+    self.create_profile_from_profile_template(profile_template, profile_name)
+  File "/home/levy/Desktop/proj/retail_pipeline/.venv/lib/python3.10/site-packages/dbt/task/init.py", line 164, in create_profile_from_profile_template
+    target = self.generate_target_from_input(prompts, initial_target)
+  File "/home/levy/Desktop/proj/retail_pipeline/.venv/lib/python3.10/site-packages/dbt/task/init.py", line 130, in generate_target_from_input
+    target[key] = click.prompt(
+  File "/home/levy/Desktop/proj/retail_pipeline/.venv/lib/python3.10/site-packages/click/termui.py", line 164, in prompt
+    value = prompt_func(prompt)
+  File "/home/levy/Desktop/proj/retail_pipeline/.venv/lib/python3.10/site-packages/click/termui.py", line 147, in prompt_func
+    raise Abort() from None
+click.exceptions.Abort
+
+[0m15:59:45.850054 [debug] [MainThread]: Resource report: {"command_name": "init", "command_wall_clock_time": 44.245193, "process_user_time": 1.604228, "process_kernel_time": 0.738989, "process_mem_max_rss": "190428", "process_out_blocks": "80", "command_success": false, "process_in_blocks": "0"}
+[0m15:59:45.850911 [debug] [MainThread]: Command `dbt init` failed at 15:59:45.850777 after 44.25 seconds
+[0m15:59:45.851503 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f365c4dd750>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f362ed961d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f362ed96020>]}
+[0m15:59:45.852140 [debug] [MainThread]: Flushing usage events
+[0m17:19:12.192761 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe5363b1420>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe534a5aa10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe534a5b0a0>]}
+
+
+============================== 17:19:12.194882 | 623ce42b-d664-4589-89ee-283e672af21a ==============================
+[0m17:19:12.194882 [info ] [MainThread]: Running with dbt=1.8.4
+[0m17:19:12.195323 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/home/levy/.dbt', 'fail_fast': 'False', 'warn_error': 'None', 'log_path': 'logs', 'debug': 'False', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'log_format': 'default', 'static_parser': 'True', 'target_path': 'None', 'invocation_command': 'dbt init', 'send_anonymous_usage_stats': 'True'}
+[0m17:19:23.170570 [debug] [MainThread]: Starter project path: /home/levy/Desktop/proj/retail_pipeline/.venv/lib/python3.10/site-packages/dbt/include/starter_project
+[0m17:19:23.173192 [info ] [MainThread]: 
+Your new dbt project "retail_dbt" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m17:19:23.173897 [info ] [MainThread]: Setting up your profile.
+[0m17:20:01.279387 [info ] [MainThread]: Profile retail_dbt written to /home/levy/.dbt/profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m17:20:01.280688 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 49.128983, "process_user_time": 2.417861, "process_kernel_time": 0.830428, "process_mem_max_rss": "200496", "process_in_blocks": "2592", "process_out_blocks": "22256"}
+[0m17:20:01.281213 [debug] [MainThread]: Command `dbt init` succeeded at 17:20:01.281130 after 49.13 seconds
+[0m17:20:01.281580 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe5363b1420>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe5348f2530>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe535daa2f0>]}
+[0m17:20:01.281937 [debug] [MainThread]: Flushing usage events
+[0m17:33:45.980044 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f7fc36f91e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f7fc1d63190>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f7fc1d632b0>]}
+
+
+============================== 17:33:45.982935 | 3ef68194-8b8f-459b-a6f3-90eca2a2989f ==============================
+[0m17:33:45.982935 [info ] [MainThread]: Running with dbt=1.8.4
+[0m17:33:45.983594 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/home/levy/.dbt', 'version_check': 'True', 'warn_error': 'None', 'log_path': 'logs', 'fail_fast': 'False', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'log_format': 'default', 'invocation_command': 'dbt init', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m17:33:50.548032 [debug] [MainThread]: Starter project path: /home/levy/Desktop/proj/retail_pipeline/.venv/lib/python3.10/site-packages/dbt/include/starter_project
+[0m17:33:50.550507 [info ] [MainThread]: 
+Your new dbt project "dbt_retail" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m17:33:50.550942 [info ] [MainThread]: Setting up your profile.
+[0m17:34:30.980715 [info ] [MainThread]: Profile dbt_retail written to /home/levy/.dbt/profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m17:34:30.981822 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 45.042755, "process_user_time": 1.521434, "process_kernel_time": 0.739085, "process_mem_max_rss": "199212", "process_out_blocks": "88", "process_in_blocks": "0"}
+[0m17:34:30.982498 [debug] [MainThread]: Command `dbt init` succeeded at 17:34:30.982393 after 45.04 seconds
+[0m17:34:30.982949 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f7fc36f91e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f7fc1daae60>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f7fc1d63eb0>]}
+[0m17:34:30.983412 [debug] [MainThread]: Flushing usage events

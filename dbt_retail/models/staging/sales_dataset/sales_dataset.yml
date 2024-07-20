@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: sales_dataset
+    tables:
+      - name: features
+        description: ""
+      - name: sales
+        description: ""
+      - name: stores
+        description: ""
+    database:
