@@ -21,15 +21,17 @@ Este projeto contém uma pipeline de dados para o setor de varejo, projetada par
 ## Requisitos
 
 - Python 3.10+
-- Poetry
-- Astro CLI
+- [Poetry](https://python-poetry.org/docs/)
+- [Astro CLI](https://www.astronomer.io/docs/cloud/stable/develop/cli-quickstart)
 
 ## Instalação
 
 1. Clone o repositório:
+
 ```bash
 git clone https://github.com/levyvix/retail_pipeline.git
 ```
+
 2. Instale os pacotes necessários:
 
 ```bash
@@ -45,12 +47,21 @@ poetry shell
 4. Execute o comando abaixo para instalar o Astro CLI:
 
 macOS
+
 ```bash
 brew install astro
 ```
 
 Linux
-```bash 
+
+```bash
 curl -sSL install.astronomer.io | sudo bash -s
 ```
 
+5. Inicialize o Airflow usando o AstroCLI:
+
+```bash
+astro dev start
+```
+
+6. Acesse o Airflow em `http://localhost:8080/`.
