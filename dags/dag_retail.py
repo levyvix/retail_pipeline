@@ -96,19 +96,17 @@ with DAG(
         aql.load_file(
             task_id="load_stores_into_BQ",
             input_file=File(
-                "gs://levy_online_retail/raw/stores data-set.csv",
+                f"gs://{BUCKET_NAME}/raw/stores data-set.csv",
                 conn_id=CONN_ID,
             ),
-            output_table=Table(
-                "stores", metadata=Metadata(schema=DATASET), conn_id=CONN_ID
-            ),
+            output_table=Table("stores", metadata=Metadata(schema=DATASET), conn_id=CONN_ID),
             use_native_support=True,
         )
 
         aql.load_file(
             task_id="load_sales_into_BQ",
             input_file=File(
-                "gs://levy_online_retail/raw/sales data-set.csv",
+                f"gs://{BUCKET_NAME}/raw/sales data-set.csv",
                 conn_id=CONN_ID,
                 filetype=FileType.CSV,
             ),
@@ -123,7 +121,7 @@ with DAG(
         aql.load_file(
             task_id="load_features_into_BQ",
             input_file=File(
-                "gs://levy_online_retail/raw/Features data set.csv",
+                f"gs://{BUCKET_NAME}/raw/Features data set.csv",
                 conn_id=CONN_ID,
             ),
             output_table=Table(
@@ -139,9 +137,7 @@ with DAG(
         group_id="staging",
         project_config=DBT_PROJECT_CONFIG,
         profile_config=DBT_PROFILE_CONFIG,
-        render_config=RenderConfig(
-            load_method=LoadMode.DBT_LS, select=["path:models/staging"]
-        ),
+        render_config=RenderConfig(load_method=LoadMode.DBT_LS, select=["path:models/staging"]),
     )
 
     # dbt run intermediate models
@@ -149,9 +145,7 @@ with DAG(
         group_id="intermediate",
         project_config=DBT_PROJECT_CONFIG,
         profile_config=DBT_PROFILE_CONFIG,
-        render_config=RenderConfig(
-            load_method=LoadMode.DBT_LS, select=["path:models/intermediate"]
-        ),
+        render_config=RenderConfig(load_method=LoadMode.DBT_LS, select=["path:models/intermediate"]),
     )
 
     # dbt run mart models
@@ -159,9 +153,7 @@ with DAG(
         group_id="mart",
         project_config=DBT_PROJECT_CONFIG,
         profile_config=DBT_PROFILE_CONFIG,
-        render_config=RenderConfig(
-            load_method=LoadMode.DBT_LS, select=["path:models/mart"]
-        ),
+        render_config=RenderConfig(load_method=LoadMode.DBT_LS, select=["path:models/mart"]),
     )
 
     # empty operators, begin and end

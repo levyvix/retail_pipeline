@@ -14,7 +14,7 @@ datetime as (
 
 select
 	{{ dbt_utils.generate_surrogate_key(['stores.store_id', 'datetime.date_id']) }} as sales_id,
-	stores.store_id,
+	cast(stores.store_id as int) as store_id,
 	datetime.date_id,
 
 	sales.weekly_sales
