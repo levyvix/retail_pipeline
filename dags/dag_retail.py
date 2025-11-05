@@ -38,6 +38,7 @@ PROFILE_YAML_PATH = "/usr/local/airflow/include/dbt_retail/profiles.yml"
 PROFILE_PROJECT_NAME = "dbt_retail"
 TARGET_NAME = "dev"
 
+
 DBT_PROFILE_CONFIG = ProfileConfig(
     profile_name=PROFILE_PROJECT_NAME,
     target_name=TARGET_NAME,
@@ -91,20 +92,22 @@ with DAG(
         )
 
     # load the files in GCS to Bigquery, also in parallel
-    @task_group(group_id="load_files")
+    @task_group(group_id="load_files_from_gcs")
     def upload_to_bigquery_from_gcs():
         aql.load_file(
-            task_id="load_stores_into_BQ",
+            task_id="load_stores_into_bq",
             input_file=File(
                 f"gs://{BUCKET_NAME}/raw/stores data-set.csv",
                 conn_id=CONN_ID,
             ),
-            output_table=Table("stores", metadata=Metadata(schema=DATASET), conn_id=CONN_ID),
+            output_table=Table(
+                "stores", metadata=Metadata(schema=DATASET), conn_id=CONN_ID
+            ),
             use_native_support=True,
         )
 
         aql.load_file(
-            task_id="load_sales_into_BQ",
+            task_id="load_sales_into_bq",
             input_file=File(
                 f"gs://{BUCKET_NAME}/raw/sales data-set.csv",
                 conn_id=CONN_ID,
@@ -119,7 +122,7 @@ with DAG(
         )
 
         aql.load_file(
-            task_id="load_features_into_BQ",
+            task_id="load_features_into_bq",
             input_file=File(
                 f"gs://{BUCKET_NAME}/raw/Features data set.csv",
                 conn_id=CONN_ID,
@@ -137,7 +140,9 @@ with DAG(
         group_id="staging",
         project_config=DBT_PROJECT_CONFIG,
         profile_config=DBT_PROFILE_CONFIG,
-        render_config=RenderConfig(load_method=LoadMode.DBT_LS, select=["path:models/staging"]),
+        render_config=RenderConfig(
+            load_method=LoadMode.DBT_LS, select=["path:models/staging"]
+        ),
     )
 
     # dbt run intermediate models
@@ -145,7 +150,9 @@ with DAG(
         group_id="intermediate",
         project_config=DBT_PROJECT_CONFIG,
         profile_config=DBT_PROFILE_CONFIG,
-        render_config=RenderConfig(load_method=LoadMode.DBT_LS, select=["path:models/intermediate"]),
+        render_config=RenderConfig(
+            load_method=LoadMode.DBT_LS, select=["path:models/intermediate"]
+        ),
     )
 
     # dbt run mart models
@@ -153,7 +160,9 @@ with DAG(
         group_id="mart",
         project_config=DBT_PROJECT_CONFIG,
         profile_config=DBT_PROFILE_CONFIG,
-        render_config=RenderConfig(load_method=LoadMode.DBT_LS, select=["path:models/mart"]),
+        render_config=RenderConfig(
+            load_method=LoadMode.DBT_LS, select=["path:models/mart"]
+        ),
     )
 
     # empty operators, begin and end

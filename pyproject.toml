@@ -3,8 +3,9 @@ name = "retail-pipeline"
 version = "0.1.0"
 requires-python = ">=3.11"
 dependencies = [
-    "apache-airflow>=3.1.0",
+    "apache-airflow==2.11.0",
     "astro-sdk-python[google]>=1.8.1",
     "astronomer-cosmos>=1.10.2",
     "dbt-bigquery>=1.10.2",
+    "pytest>=8.4.2",
 ]
